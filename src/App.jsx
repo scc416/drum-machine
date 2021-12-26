@@ -95,7 +95,7 @@ const App = () => {
                 onClick={power}
                 className="clickable"
               >
-                <i class="fas fa-power-off" />
+                <i className="fas fa-power-off" />
               </div>
             </div>
           </div>
