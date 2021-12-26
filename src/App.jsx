@@ -7,7 +7,8 @@ const padElement = (key) => {
     <div
       id={"pad-" + key}
       className="drum-pad clickable"
-      onClick={() =>console.log("CLICK")
+      onClick={
+        () => console.log("CLICK")
         // this.props.play(key, this.props.on, this.props.volume, this.props.muted)
       }
       // style={playingStyle(key)}
@@ -15,7 +16,8 @@ const padElement = (key) => {
       <audio
         id={key}
         className="clip"
-        onTimeUpdate={ () => console.log("onTImeupdate")
+        onTimeUpdate={
+          () => console.log("onTImeupdate")
           // (event) =>
           // this.props.classChange(
           //   event.target.currentTime,
@@ -23,7 +25,8 @@ const padElement = (key) => {
           //   this.props.state
           // )
         }
-        onEnded={() => console.log("HI")
+        onEnded={
+          () => console.log("HI")
           // this.props.ending(key, this.props.state)
         }
         src={soundLinks[key]}
@@ -34,42 +37,37 @@ const padElement = (key) => {
 };
 
 const App = () => {
-  const { volumeEnd, volumeChanging, volumeStart, on, volume, muted, play, hideScreen } = useData();
+  const {
+    volumeEnd,
+    volumeChanging,
+    volumeStart,
+    on,
+    volume,
+    muted,
+    play,
+    hideScreen,
+    key,
+    mute,
+    power,
+  } = useData();
   return (
     <div
       onMouseUp={(e) => volumeEnd(e.clientX, volumeChanging)}
-      onMouseMove={
-        (e) => volumeStart(e.clientX, volumeChanging)
-      }
+      onMouseMove={(e) => volumeStart(e.clientX, volumeChanging)}
       tabIndex="0"
       id="drum-machine"
-      onKeyPress={
-        (e) =>
-        play(
-          e.key.toUpperCase(),
-          on,
-          volume,
-          muted
-        )
-      }
+      onKeyPress={(e) => play(e.key.toUpperCase(), on, volume, muted)}
     >
       <div className="player">
         <div id="display">
-          <div 
-          style={hideScreen}
-            >
+          <div style={hideScreen}>
             <span className="title">Drums and Percussion</span>
-            <div className="show">
-              {/* {instrument[this.props.state]} */}
-              </div>
+            <div className="show">{instruments[key]}</div>
             <div className="control">
               <div className="volume">
-                <div
-                  // onMouseDown={this.props.mute}
-                  className="clickable to-be-clicked"
-                >
+                <div onMouseDown={mute} className="clickable to-be-clicked">
                   <i
-                    // className={volumeIcon(this.props.volume, this.props.muted)}
+                  // className={volumeIcon(this.props.volume, this.props.muted)}
                   />
                 </div>
 
@@ -94,7 +92,7 @@ const App = () => {
               <div
                 id="power"
                 // style={powerStyle(this.props.on)}
-                // onClick={this.props.power}
+                onClick={power}
                 className="clickable"
               >
                 <i class="fas fa-power-off" />

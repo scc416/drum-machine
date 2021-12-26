@@ -102,9 +102,11 @@ const useData = () => {
     muted: false,
   });
 
-  const hideScreen = on ? {} : { visibility: "hidden" };
+  const power = () => dispatch({ type: POWER });
 
-  const { volumeChanging, on, muted } = state;
+  const { volumeChanging, on, muted, key } = state;
+
+  const hideScreen = on ? {} : { visibility: "hidden" };
 
   return {
     volumeEnd,
@@ -116,6 +118,8 @@ const useData = () => {
     play,
     mute,
     hideScreen,
+    key,
+    power,
   };
 };
 
