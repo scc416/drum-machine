@@ -29,3 +29,4 @@ export const POWER = "POWER"
 export const VOLUME_START = "VOLUME_START";
 export const VOLUME_END = "VOLUME_END";
 export const MUTE = "MUTE"
+export const VOLUME_MOVE = "VOLUME_MOVE";

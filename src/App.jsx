@@ -16,11 +16,12 @@ const App = () => {
     padElement,
     powerStyle,
     volumeWidth,
+    volumeMove
   } = useData();
   return (
     <div
       onMouseUp={(e) => volumeEnd(e.clientX)}
-      onMouseMove={(e) => volumeStart(e.clientX)}
+      onMouseMove={(e) => volumeMove(e.clientX)}
       tabIndex="0"
       id="drum-machine"
       onKeyPress={(e) => play(e.key.toUpperCase())}
@@ -39,6 +40,7 @@ const App = () => {
                 <div
                   className="volume-bar clickable"
                   onMouseDown={(e) => volumeStart(e.clientX)}
+                  
                 >
                   <div id="volume-bar-background" />
                   <div className="drag-bar" style={barPosition()}>

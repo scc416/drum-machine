@@ -8,6 +8,7 @@ import {
   VOLUME_END,
   MUTE,
   soundLinks,
+  VOLUME_MOVE,
 } from "../constants";
 
 const getVolume = (num) => {
@@ -25,6 +26,13 @@ const getVolume = (num) => {
 
 const useData = () => {
   const reducers = {
+    [VOLUME_MOVE]: (state, { newVolume }) => {
+      return {
+        ...state,
+        volume: newVolume,
+        muted: false,
+      };
+    },
     [PLAY]: (state, { key }) => {
       return { ...state, key, classes: true };
     },
@@ -62,6 +70,7 @@ const useData = () => {
   };
 
   const reducer = (state, action) => {
+    console.log(action.type);
     return reducers[action.type](state, action) || state;
   };
 
@@ -91,6 +100,11 @@ const useData = () => {
 
   const volumeStart = (num) => {
     dispatch({ type: VOLUME_START, newVolume: getVolume(num) });
+  };
+
+  const volumeMove = (num) => {
+    if (volumeChanging)
+      dispatch({ type: VOLUME_MOVE, newVolume: getVolume(num) });
   };
 
   const mute = () => dispatch({ type: MUTE });
@@ -204,6 +218,7 @@ const useData = () => {
     volumeIcon,
     barPosition,
     volumeWidth,
+    volumeMove,
   };
 };
 
