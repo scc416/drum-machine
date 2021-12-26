@@ -2,61 +2,26 @@ import "./App.css";
 import { soundLinks, instruments } from "./constants";
 import useData from "./hooks/useData";
 
-const padElement = (key) => {
-  return (
-    <div
-      id={"pad-" + key}
-      className="drum-pad clickable"
-      onClick={
-        () => console.log("CLICK")
-        // this.props.play(key, this.props.on, this.props.volume, this.props.muted)
-      }
-      // style={playingStyle(key)}
-    >
-      <audio
-        id={key}
-        className="clip"
-        onTimeUpdate={
-          () => console.log("onTImeupdate")
-          // (event) =>
-          // this.props.classChange(
-          //   event.target.currentTime,
-          //   key,
-          //   this.props.state
-          // )
-        }
-        onEnded={
-          () => console.log("HI")
-          // this.props.ending(key, this.props.state)
-        }
-        src={soundLinks[key]}
-      />
-      {key}
-    </div>
-  );
-};
-
 const App = () => {
   const {
     volumeEnd,
-    volumeChanging,
     volumeStart,
-    on,
-    volume,
-    muted,
+    barPosition,
     play,
     hideScreen,
     key,
     mute,
     power,
+    volumeIcon,
+    padElement
   } = useData();
   return (
     <div
-      onMouseUp={(e) => volumeEnd(e.clientX, volumeChanging)}
-      onMouseMove={(e) => volumeStart(e.clientX, volumeChanging)}
+      onMouseUp={(e) => volumeEnd(e.clientX)}
+      onMouseMove={(e) => volumeStart(e.clientX)}
       tabIndex="0"
       id="drum-machine"
-      onKeyPress={(e) => play(e.key.toUpperCase(), on, volume, muted)}
+      onKeyPress={(e) => play(e.key.toUpperCase())}
     >
       <div className="player">
         <div id="display">
@@ -67,18 +32,18 @@ const App = () => {
               <div className="volume">
                 <div onMouseDown={mute} className="clickable to-be-clicked">
                   <i
-                  // className={volumeIcon(this.props.volume, this.props.muted)}
+                  className={volumeIcon()}
                   />
                 </div>
 
                 <div
                   className="volume-bar clickable"
-                  // onMouseDown={(e) => this.props.volumeStart(e.clientX, true)}
+                  onMouseDown={(e) => volumeStart(e.clientX)}
                 >
                   <div id="volume-bar-background" />
                   <div
                     className="drag-bar"
-                    // style={barPosition(this.props.volume, this.props.muted)}
+                    style={barPosition()}
                   >
                     <div
                       id="volume-bar"
