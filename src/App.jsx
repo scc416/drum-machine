@@ -34,7 +34,7 @@ const padElement = (key) => {
 };
 
 const App = () => {
-  const { volumeEnd, volumeChanging, volumeStart, on, volume, muted, play } = useData();
+  const { volumeEnd, volumeChanging, volumeStart, on, volume, muted, play, hideScreen } = useData();
   return (
     <div
       onMouseUp={(e) => volumeEnd(e.clientX, volumeChanging)}
@@ -56,7 +56,7 @@ const App = () => {
       <div className="player">
         <div id="display">
           <div 
-          // style={hideScreen(this.props.on)}
+          style={hideScreen}
             >
             <span className="title">Drums and Percussion</span>
             <div className="show">

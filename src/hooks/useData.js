@@ -102,6 +102,8 @@ const useData = () => {
     muted: false,
   });
 
+  const hideScreen = on ? {} : { visibility: "hidden" };
+
   const { volumeChanging, on, muted } = state;
 
   return {
@@ -113,6 +115,7 @@ const useData = () => {
     muted,
     play,
     mute,
+    hideScreen,
   };
 };
 
