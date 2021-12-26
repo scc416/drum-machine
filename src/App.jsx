@@ -16,9 +16,9 @@ const App = () => {
     padElement,
     powerStyle,
     volumeWidth,
-    volumeMove
+    volumeMove,
   } = useData();
-  console.log(key);
+
   return (
     <div
       onMouseUp={(e) => volumeEnd(e.clientX)}
@@ -41,7 +41,6 @@ const App = () => {
                 <div
                   className="volume-bar clickable"
                   onMouseDown={(e) => volumeStart(e.clientX)}
-                  
                 >
                   <div id="volume-bar-background" />
                   <div className="drag-bar" style={barPosition()}>

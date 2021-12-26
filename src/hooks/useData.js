@@ -65,7 +65,8 @@ const useData = () => {
       return state;
     },
     [MUTE]: (state) => {
-      return { state, muted: !state.muted };
+      const muted = !state.muted;
+      return { state, muted };
     },
   };
 
@@ -107,7 +108,10 @@ const useData = () => {
       dispatch({ type: VOLUME_MOVE, newVolume: getVolume(num) });
   };
 
-  const mute = () => dispatch({ type: MUTE });
+  const mute = () => {
+    console.log("MOTE")
+    dispatch({ type: MUTE });
+  }
 
   const play = (key) => {
     if (
