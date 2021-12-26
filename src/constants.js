@@ -23,9 +23,9 @@ export const instruments = {
 };
 
 export const PLAY = "PLAY";
-export const CLASSCHANGE = "CLASSCHANGE";
+export const CLASS_CHANGE = "CLASS_CHANGE";
 export const ENDED = "ENDED";
 export const POWER = "POWER"
-export const VOLUMESTART = "VOLUMESTART";
-export const VOLUMEEND = "VOLUMEEND";
+export const VOLUME_START = "VOLUME_START";
+export const VOLUME_END = "VOLUME_END";
 export const MUTE = "MUTE"
