@@ -7,7 +7,7 @@ import {
   VOLUME_START,
   VOLUME_END,
   MUTE,
-  soundLinks
+  soundLinks,
 } from "../constants";
 
 const getVolume = (num) => {
@@ -46,12 +46,15 @@ const useData = () => {
       };
     },
     [VOLUME_END]: (state, { newVolume }) => {
-      return {
-        ...state,
-        volumeChanging: false,
-        volume: newVolume,
-        muted: false,
-      };
+      if (state.volumeChanging) {
+        return {
+          ...state,
+          volumeChanging: false,
+          volume: newVolume,
+          muted: false,
+        };
+      }
+      return state;
     },
     [MUTE]: (state) => {
       return { state, muted: !state.muted };
@@ -72,6 +75,15 @@ const useData = () => {
   });
 
   const { volumeChanging, on, muted, key, volume, classes } = state;
+
+  const volumeWidth = () => {
+    const v = muted ? 0 : volume;
+    if (muted) {
+      return { width: "0px" };
+    } else {
+      return { width: volume * 160 + "px" };
+    }
+  };
 
   const volumeEnd = (num) => {
     dispatch({ type: VOLUME_END, newVolume: getVolume(num) });
@@ -109,6 +121,17 @@ const useData = () => {
 
   const hideScreen = on ? {} : { visibility: "hidden" };
 
+  const powerStyle = () => {
+    if (on) {
+      return {};
+    } else {
+      return {
+        "text-shadow": "none",
+        color: "grey",
+      };
+    }
+  };
+
   const volumeIcon = () => {
     if (muted) {
       return "fas fa-volume-mute";
@@ -124,17 +147,23 @@ const useData = () => {
   const barPosition = () => {
     const v = muted ? 0 : volume;
     return {
-      right: (1 - v) * 160 + "px"
+      right: (1 - v) * 160 + "px",
     };
-  }
+  };
 
-  const playingStyle = (thisKey) => {  
+  const playingStyle = (thisKey) => {
     if (thisKey === key && classes) {
       return {
-        "text-shadow": "1.5px 1.5px 1px grey"
+        "text-shadow": "1.5px 1.5px 1px grey",
       };
     } else {
       return {};
+    }
+  };
+
+  const ending = (thisKey) => {
+    if (thisKey == key) {
+      dispatch({ type: ENDED });
     }
   };
 
@@ -149,19 +178,8 @@ const useData = () => {
         <audio
           id={key}
           className="clip"
-          onTimeUpdate={
-            () => console.log("onTImeupdate")
-            // (event) =>
-            // this.props.classChange(
-            //   event.target.currentTime,
-            //   key,
-            //   this.props.state
-            // )
-          }
-          onEnded={
-            () => console.log("HI")
-            // this.props.ending(key, this.props.state)
-          }
+          onTimeUpdate={() => dispatch({ type: CLASS_CHANGE })}
+          onEnded={ending(key)}
           src={soundLinks[key]}
         />
         {key}
@@ -170,6 +188,7 @@ const useData = () => {
   };
 
   return {
+    powerStyle,
     padElement,
     volumeEnd,
     volumeChanging,
@@ -183,7 +202,8 @@ const useData = () => {
     key,
     power,
     volumeIcon,
-    barPosition
+    barPosition,
+    volumeWidth,
   };
 };
 

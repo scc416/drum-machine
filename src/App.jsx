@@ -13,7 +13,9 @@ const App = () => {
     mute,
     power,
     volumeIcon,
-    padElement
+    padElement,
+    powerStyle,
+    volumeWidth,
   } = useData();
   return (
     <div
@@ -31,9 +33,7 @@ const App = () => {
             <div className="control">
               <div className="volume">
                 <div onMouseDown={mute} className="clickable to-be-clicked">
-                  <i
-                  className={volumeIcon()}
-                  />
+                  <i className={volumeIcon()} />
                 </div>
 
                 <div
@@ -41,14 +41,8 @@ const App = () => {
                   onMouseDown={(e) => volumeStart(e.clientX)}
                 >
                   <div id="volume-bar-background" />
-                  <div
-                    className="drag-bar"
-                    style={barPosition()}
-                  >
-                    <div
-                      id="volume-bar"
-                      // style={volumeWidth(this.props.volume, this.props.muted)}
-                    >
+                  <div className="drag-bar" style={barPosition()}>
+                    <div id="volume-bar" style={volumeWidth()}>
                       <div id="drag" />
                     </div>
                   </div>
@@ -56,7 +50,7 @@ const App = () => {
               </div>
               <div
                 id="power"
-                // style={powerStyle(this.props.on)}
+                style={powerStyle()}
                 onClick={power}
                 className="clickable"
               >
