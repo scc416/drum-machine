@@ -9,6 +9,19 @@ import {
   MUTE,
 } from "../constants";
 
+const volume = (num) => {
+  const position = document
+    .getElementById("volume-bar-background")
+    .getBoundingClientRect().left;
+  let newNum = num - position;
+  if (newNum > 160) {
+    newNum = 160;
+  } else if (newNum < 0) {
+    newNum = 0;
+  }
+  return newNum / 160;
+};
+
 const useData = () => {
   const reducers = {
     [PLAY]: (state, { key }) => {
@@ -40,12 +53,44 @@ const useData = () => {
       };
     },
     [MUTE]: (state) => {
-      return { state, muted: !state.muted};
+      return { state, muted: !state.muted };
     },
   };
 
   const reducer = (state, action) => {
     return reducers[action.type](state, action) || state;
+  };
+
+  const volumeEnd = (num) => {
+    return { type: VOLUME_END, newVolume: volume(num) };
+  };
+
+  const volumeStart = (num) => {
+    return { type: VOLUME_START, newVolume: volume(num) };
+  };
+
+  const mute = { type: MUTE };
+
+  const play = (key, volume) => {
+    if (
+      key == "Q" ||
+      key == "W" ||
+      key == "E" ||
+      key == "A" ||
+      key == "S" ||
+      key == "D" ||
+      key == "Z" ||
+      key == "X" ||
+      key == "C"
+    ) {
+      let audio = document.getElementById(key);
+      audio.currentTime = 0;
+      audio.volume = volume;
+      audio.play();
+      return { type: PLAY, key: key };
+    } else {
+      return { type: null };
+    }
   };
 
   const [state, dispatch] = useReducer(reducer, {
@@ -57,7 +102,18 @@ const useData = () => {
     muted: false,
   });
 
-  return {};
+  const { volumeChanging, on, volume, muted } = state;
+
+  return {
+    volumeEnd,
+    volumeChanging,
+    volumeStart,
+    on,
+    volume,
+    muted,
+    play,
+    mute,
+  };
 };
 
 export default useData;

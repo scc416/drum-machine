@@ -1,5 +1,6 @@
 import "./App.css";
 import { soundLinks, instruments } from "./constants";
+import useData from "./hooks/useData";
 
 const padElement = (key) => {
   return (
@@ -33,27 +34,23 @@ const padElement = (key) => {
 };
 
 const App = () => {
+  const { volumeEnd, volumeChanging, volumeStart, on, volume, muted, play } = useData();
   return (
     <div
-      onMouseUp={
-        () => console.log("MOUSE UP")
-        // (e) => this.props.volumeEnd(e.clientX, this.props.volumeChanging)
-      }
+      onMouseUp={(e) => volumeEnd(e.clientX, volumeChanging)}
       onMouseMove={
-        () => console.log("MOUSE UP")
-        // (e) => this.props.volumeStart(e.clientX, this.props.volumeChanging)
+        (e) => volumeStart(e.clientX, volumeChanging)
       }
       tabIndex="0"
       id="drum-machine"
       onKeyPress={
-        () => console.log("onkeypress")
-        // (e) =>
-        // this.props.play(
-        //   e.key.toUpperCase(),
-        //   this.props.on,
-        //   this.props.volume,
-        //   this.props.muted
-        // )
+        (e) =>
+        play(
+          e.key.toUpperCase(),
+          on,
+          volume,
+          muted
+        )
       }
     >
       <div className="player">
