@@ -123,11 +123,9 @@ const useData = () => {
     ) {
       let audio = document.getElementById(key);
       audio.currentTime = 0;
-      audio.volume = volume;
+      if (volume) audio.volume = volume;
       audio.play();
-      return { type: PLAY, key: key };
-    } else {
-      return { type: null };
+      dispatch({ type: PLAY, key: key });
     }
   };
 
@@ -135,7 +133,7 @@ const useData = () => {
 
   const hideScreen = on ? {} : { visibility: "hidden" };
 
-  const powerStyle = on ? {} : { "text-shadow": "none", color: "grey" };
+  const powerStyle = on ? {} : { textShadow: "none", color: "grey" };
 
   const volumeIcon = () => {
     if (muted) {
@@ -159,7 +157,7 @@ const useData = () => {
   const playingStyle = (thisKey) => {
     if (thisKey === key && classes) {
       return {
-        "text-shadow": "1.5px 1.5px 1px grey",
+        textShadow: "1.5px 1.5px 1px grey",
       };
     } else {
       return {};
@@ -183,7 +181,6 @@ const useData = () => {
         <audio
           id={key}
           className="clip"
-          onTimeUpdate={() => dispatch({ type: CLASS_CHANGE, key })}
           onEnded={() => ending(key)}
           src={soundLinks[key]}
         />
