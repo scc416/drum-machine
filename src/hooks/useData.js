@@ -62,26 +62,26 @@ const useData = () => {
   };
 
   const volumeEnd = (num) => {
-    return { type: VOLUME_END, newVolume: volume(num) };
+    dispatch({ type: VOLUME_END, newVolume: volume(num) });
   };
 
   const volumeStart = (num) => {
-    return { type: VOLUME_START, newVolume: volume(num) };
+    dispatch({ type: VOLUME_START, newVolume: volume(num) });
   };
 
-  const mute = { type: MUTE };
+  const mute = () => dispatch({ type: MUTE });
 
   const play = (key, volume) => {
     if (
-      key == "Q" ||
-      key == "W" ||
-      key == "E" ||
-      key == "A" ||
-      key == "S" ||
-      key == "D" ||
-      key == "Z" ||
-      key == "X" ||
-      key == "C"
+      key === "Q" ||
+      key === "W" ||
+      key === "E" ||
+      key === "A" ||
+      key === "S" ||
+      key === "D" ||
+      key === "Z" ||
+      key === "X" ||
+      key === "C"
     ) {
       let audio = document.getElementById(key);
       audio.currentTime = 0;
@@ -102,7 +102,7 @@ const useData = () => {
     muted: false,
   });
 
-  const { volumeChanging, on, volume, muted } = state;
+  const { volumeChanging, on, muted } = state;
 
   return {
     volumeEnd,
