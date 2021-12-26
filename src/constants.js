@@ -10,3 +10,22 @@ export const soundLinks = {
   C: "https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-free-to-use-sounds/ftus_musical_instrument_ching_gamelan_single_hit_001_529.mp3"
 };
 
+export const instruments = {
+  Q: "Drum 1",
+  W: "Drum 2",
+  E: "Crash Cymbal",
+  A: "Gendèr 1",
+  S: "Gendèr 2",
+  D: "Triangle",
+  Z: "Shaker",
+  X: "Tambourine",
+  C: "Finger Cymbals"
+};
+
+export const PLAY = "PLAY";
+export const CLASSCHANGE = "CLASSCHANGE";
+export const ENDED = "ENDED";
+export const POWER = "POWER"
+export const VOLUMESTART = "VOLUMESTART";
+export const VOLUMEEND = "VOLUMEEND";
+export const MUTE = "MUTE"

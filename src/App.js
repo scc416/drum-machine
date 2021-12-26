@@ -1,5 +1,5 @@
 import "./App.css";
-import { soundLinks } from "./constants";
+import { soundLinks, instruments } from "./constants";
 
 const padElement = (key) => {
   return (
