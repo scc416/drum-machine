@@ -36,8 +36,8 @@ const useData = () => {
     [PLAY]: (state, { key }) => {
       return { ...state, key, classes: true };
     },
-    [CLASS_CHANGE]: (state) => {
-      return { ...state, classes: false };
+    [CLASS_CHANGE]: (state, { key }) => {
+      return { ...state, key, classes: false };
     },
     [ENDED]: (state) => {
       return { ...state, classes: false, key: null };
@@ -135,16 +135,7 @@ const useData = () => {
 
   const hideScreen = on ? {} : { visibility: "hidden" };
 
-  const powerStyle = () => {
-    if (on) {
-      return {};
-    } else {
-      return {
-        "text-shadow": "none",
-        color: "grey",
-      };
-    }
-  };
+  const powerStyle = on ? {} : { "text-shadow": "none", color: "grey" };
 
   const volumeIcon = () => {
     if (muted) {
@@ -192,8 +183,8 @@ const useData = () => {
         <audio
           id={key}
           className="clip"
-          onTimeUpdate={() => dispatch({ type: CLASS_CHANGE })}
-          onEnded={ending(key)}
+          onTimeUpdate={() => dispatch({ type: CLASS_CHANGE, key })}
+          onEnded={() => ending(key)}
           src={soundLinks[key]}
         />
         {key}

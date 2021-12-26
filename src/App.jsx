@@ -1,5 +1,5 @@
 import "./App.css";
-import { soundLinks, instruments } from "./constants";
+import { instruments } from "./constants";
 import useData from "./hooks/useData";
 
 const App = () => {
@@ -18,6 +18,7 @@ const App = () => {
     volumeWidth,
     volumeMove
   } = useData();
+  console.log(key);
   return (
     <div
       onMouseUp={(e) => volumeEnd(e.clientX)}
@@ -52,7 +53,7 @@ const App = () => {
               </div>
               <div
                 id="power"
-                style={powerStyle()}
+                style={powerStyle}
                 onClick={power}
                 className="clickable"
               >
