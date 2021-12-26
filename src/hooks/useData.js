@@ -1,7 +1,6 @@
 import { useReducer } from "react";
 import {
   PLAY,
-  CLASS_CHANGE,
   ENDED,
   POWER,
   VOLUME_START,
@@ -35,9 +34,6 @@ const useData = () => {
     },
     [PLAY]: (state, { key }) => {
       return { ...state, key, classes: true };
-    },
-    [CLASS_CHANGE]: (state, { key }) => {
-      return { ...state, key, classes: false };
     },
     [ENDED]: (state) => {
       return { ...state, classes: false, key: null };

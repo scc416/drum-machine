@@ -23,7 +23,6 @@ export const instruments = {
 };
 
 export const PLAY = "PLAY";
-export const CLASS_CHANGE = "CLASS_CHANGE";
 export const ENDED = "ENDED";
 export const POWER = "POWER"
 export const VOLUME_START = "VOLUME_START";
