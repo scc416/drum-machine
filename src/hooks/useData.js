@@ -65,8 +65,7 @@ const useData = () => {
       return state;
     },
     [MUTE]: (state) => {
-      const muted = !state.muted;
-      return { state, muted };
+      return { ...state, muted: !state.muted };
     },
   };
 
@@ -109,9 +108,9 @@ const useData = () => {
   };
 
   const mute = () => {
-    console.log("MOTE")
+    console.log("MOTE");
     dispatch({ type: MUTE });
-  }
+  };
 
   const play = (key) => {
     if (
@@ -127,15 +126,17 @@ const useData = () => {
     ) {
       let audio = document.getElementById(key);
       audio.currentTime = 0;
-      if (volume) audio.volume = volume;
+      audio.volume = volume;
+      audio.muted = muted;
       audio.play();
-      dispatch({ type: PLAY, key: key });
+      dispatch({ type: PLAY, key });
     }
   };
 
   const power = () => dispatch({ type: POWER });
 
   const hideScreen = on ? {} : { visibility: "hidden" };
+  console.log("on", on);
 
   const powerStyle = on ? {} : { textShadow: "none", color: "grey" };
 
@@ -199,7 +200,6 @@ const useData = () => {
     volumeEnd,
     volumeChanging,
     volumeStart,
-    on,
     volume,
     muted,
     play,

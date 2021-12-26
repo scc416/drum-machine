@@ -19,6 +19,7 @@ const App = () => {
     volumeMove,
   } = useData();
 
+  console.log(hideScreen);
   return (
     <div
       onMouseUp={(e) => volumeEnd(e.clientX)}
