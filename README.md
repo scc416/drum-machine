@@ -1,6 +1,7 @@
 # Drum Machine
 
-A react drum machine. This is one of my project for [Front End Development Libraries Projects](https://www.freecodecamp.org/learn/front-end-development-libraries/) on [freeCodeCamp](https://www.freecodecamp.org/): [Build a Drum Machine](https://www.freecodecamp.org/learn/front-end-development-libraries/front-end-development-libraries-projects/build-a-drum-machine).
+A react drum machine with 9 clickable drum pad elements, which can also be trigger by key press. The drum machine also has a display, power button and volume control.  
+This is one of my project for [Front End Development Libraries Projects](https://www.freecodecamp.org/learn/front-end-development-libraries/) on [freeCodeCamp](https://www.freecodecamp.org/): [Build a Drum Machine](https://www.freecodecamp.org/learn/front-end-development-libraries/front-end-development-libraries-projects/build-a-drum-machine).
 
 ## Table of Content
 
@@ -14,6 +15,7 @@ A react drum machine. This is one of my project for [Front End Development Libra
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). It is deployed to [Netlify](https://www.netlify.com/):  
 https://the-quote.netlify.app/https://drum-pod.netlify.app/
+
 ## Final Product
 
 | ![desktop](./docs/desktop.png) |
