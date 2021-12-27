@@ -54,7 +54,7 @@ body {
   background-color: #fb5611;
 }
 
-#display {
+.display {
   background-color: #17100f;
   color: white;
   width: 270px;
