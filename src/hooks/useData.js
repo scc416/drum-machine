@@ -74,6 +74,9 @@ const useData = () => {
 
   const actualVolume = muted ? 0 : volume;
   const volumeWidth = { width: actualVolume * 160 + "px" };
+  const barPosition = { right: (1 - actualVolume) * 160 + "px" };
+
+  const currentInstument = instruments[key];
 
   const volumeFunc = (type) => {
     return ({ clientX }) => {
@@ -81,25 +84,25 @@ const useData = () => {
     };
   };
 
+  const power = () => dispatch({ type: POWER });
+
   const mute = () => dispatch({ type: MUTE });
 
   const play = (rawKey, valid) => {
     const key = valid ? rawKey : rawKey.key.toUpperCase();
     const keyExists = keys.includes(key);
     if (keyExists) {
+      dispatch({ type: PLAY, key });
+
       const audio = document.getElementById(key);
       audio.currentTime = 0;
       audio.volume = volume;
       audio.muted = muted;
       audio.play();
-      dispatch({ type: PLAY, key });
     }
   };
 
-  const power = () => dispatch({ type: POWER });
-
   const hideScreen = on ? {} : { visibility: "hidden" };
-
   const powerStyle = on ? {} : { textShadow: "none", color: "grey" };
 
   const volumeIcon = () => {
@@ -112,30 +115,14 @@ const useData = () => {
     return "fas fa-volume-down";
   };
 
-  const barPosition = () => {
-    const v = muted ? 0 : volume;
-    return {
-      right: (1 - v) * 160 + "px",
-    };
-  };
-
-  const playingStyle = (thisKey) => {
-    if (thisKey === key && playing) {
-      return {
-        textShadow: "1.5px 1.5px 1px grey",
-      };
-    } else {
-      return {};
-    }
-  };
+  const playingStyle = (thisKey) =>
+    thisKey === key ? { textShadow: "1.5px 1.5px 1px grey" } : {};
 
   const ending = (thisKey) => {
     if (thisKey === key) {
       dispatch({ type: ENDED });
     }
   };
-
-  const currentInstument = instruments[key];
 
   return {
     playingStyle,
