@@ -5,6 +5,7 @@ const Footer = () => {
       <a
         href="https://www.csaimages.com/preview.asp?image=837422&itemw=4&itemf=0001&itemstep=1&itemx=2"
         target="_blank"
+        rel="noreferrer"
       >
         CSA IMAGES
       </a>
