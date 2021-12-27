@@ -82,10 +82,8 @@ const useData = () => {
 
   const { volumeChanging, on, muted, key, volume, playing } = state;
 
-  const volumeWidth = () => {
-    const v = muted ? 0 : volume;
-    return { width: v * 160 + "px" };
-  };
+  const actualVolume = muted ? 0 : volume;
+  const volumeWidth = { width: actualVolume * 160 + "px" };
 
   const volumeFunc = (type) => {
     return ({ clientX }) => {

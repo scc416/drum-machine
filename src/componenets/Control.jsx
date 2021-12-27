@@ -23,7 +23,7 @@ const Control = (props) => {
         >
           <div id="volume-bar-background" />
           <div className="drag-bar" style={barPosition()}>
-            <div id="volume-bar" style={volumeWidth()}>
+            <div id="volume-bar" style={volumeWidth}>
               <div id="drag" />
             </div>
           </div>
