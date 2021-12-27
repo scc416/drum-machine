@@ -19,11 +19,10 @@ const App = () => {
     volumeMove,
   } = useData();
 
-  console.log(hideScreen);
   return (
     <div
-      onMouseUp={(e) => volumeEnd(e.clientX)}
-      onMouseMove={(e) => volumeMove(e.clientX)}
+      onMouseUp={volumeEnd}
+      onMouseMove={volumeMove}
       tabIndex="0"
       id="drum-machine"
       onKeyPress={(e) => play(e.key.toUpperCase())}

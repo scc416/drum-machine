@@ -90,17 +90,18 @@ const useData = () => {
     }
   };
 
-  const volumeEnd = (num) => {
-    dispatch({ type: VOLUME_END, newVolume: getVolume(num) });
+  const volumeEnd = ({ clientX }) => {
+    dispatch({ type: VOLUME_END, newVolume: getVolume(clientX) });
   };
 
-  const volumeStart = (num) => {
-    dispatch({ type: VOLUME_START, newVolume: getVolume(num) });
+  const volumeStart = ({ clientX }) => {
+    dispatch({ type: VOLUME_START, newVolume: getVolume(clientX) });
   };
 
-  const volumeMove = (num) => {
-    if (volumeChanging)
-      dispatch({ type: VOLUME_MOVE, newVolume: getVolume(num) });
+  const volumeMove = ({ clientX }) => {
+    if (volumeChanging) {
+      dispatch({ type: VOLUME_MOVE, newVolume: getVolume(clientX) });
+    }
   };
 
   const mute = () => {
