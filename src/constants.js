@@ -11,15 +11,15 @@ export const soundLinks = {
 };
 
 export const instruments = {
+  D: "Triangle",
+  C: "Finger Cymbals",
+  X: "Tambourine",
+  Z: "Shaker",
+  A: "Gendèr 1",
   Q: "Drum 1",
   W: "Drum 2",
   E: "Crash Cymbal",
-  A: "Gendèr 1",
   S: "Gendèr 2",
-  D: "Triangle",
-  Z: "Shaker",
-  X: "Tambourine",
-  C: "Finger Cymbals"
 };
 
 export const keys = Object.keys(instruments);

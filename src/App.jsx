@@ -1,6 +1,7 @@
 import "./App.css";
 import { instruments } from "./constants";
 import useData from "./hooks/useData";
+import KeypadList from "./componenets/KeypadList";
 
 const App = () => {
   const {
@@ -13,10 +14,11 @@ const App = () => {
     mute,
     power,
     volumeIcon,
-    padElement,
     powerStyle,
     volumeWidth,
     volumeMove,
+    playingStyle,
+    ending,
   } = useData();
 
   return (
@@ -61,18 +63,7 @@ const App = () => {
             </div>
           </div>
         </div>
-        <div className="circle-container">
-          {padElement("D")}
-          {padElement("C")}
-          {padElement("X")}
-          {padElement("Z")}
-          {padElement("A")}
-          {padElement("Q")}
-          {padElement("W")}
-          {padElement("E")}
-          {padElement("S")}
-          <div className="circle" />
-        </div>
+        <KeypadList {...{ play, playingStyle, ending }} />
       </div>
       <div className="footer">
         Design cloned from&nbsp;

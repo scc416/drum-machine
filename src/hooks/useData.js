@@ -161,28 +161,10 @@ const useData = () => {
     }
   };
 
-  const padElement = (key) => {
-    return (
-      <div
-        id={"pad-" + key}
-        className="drum-pad clickable"
-        onClick={() => play(key)}
-        style={playingStyle(key)}
-      >
-        <audio
-          id={key}
-          className="clip"
-          onEnded={() => ending(key)}
-          src={soundLinks[key]}
-        />
-        {key}
-      </div>
-    );
-  };
-
   return {
+    playingStyle,
+    ending,
     powerStyle,
-    padElement,
     volumeEnd,
     volumeChanging,
     volumeStart,
