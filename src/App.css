@@ -54,7 +54,7 @@ body {
 
 .display {
   background-color: #17100f;
-  color: white;
+  color: #FFF;
   width: 270px;
   height: 190px;
   margin-top: 27.5px;
@@ -97,7 +97,7 @@ body {
   width: 160px;
   border-radius: 5px;
   height: 10px;
-  background-color: white;
+  background-color: #FFF;
   position: relative;
 }
 
@@ -183,7 +183,7 @@ body {
 .circle {
   width: 50px;
   height: 50px;
-  border: white 4px solid;
+  border: 4px solid #FFF;
   position: absolute;
   border-radius: 50%;
   top: 80px;
