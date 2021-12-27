@@ -81,9 +81,7 @@ const useData = () => {
     };
   };
 
-  const mute = () => {
-    dispatch({ type: MUTE });
-  };
+  const mute = () => dispatch({ type: MUTE });
 
   const play = (rawKey, valid) => {
     const key = valid ? rawKey : rawKey.key.toUpperCase();
