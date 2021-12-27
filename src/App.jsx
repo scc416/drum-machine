@@ -2,6 +2,7 @@ import "./App.css";
 import { instruments } from "./constants";
 import useData from "./hooks/useData";
 import KeypadList from "./componenets/KeypadList";
+import Footer from "./componenets/Footer"
 
 const App = () => {
   const {
@@ -65,15 +66,7 @@ const App = () => {
         </div>
         <KeypadList {...{ play, playingStyle, ending }} />
       </div>
-      <div className="footer">
-        Design cloned from&nbsp;
-        <a
-          href="https://www.csaimages.com/preview.asp?image=837422&itemw=4&itemf=0001&itemstep=1&itemx=2"
-          target="_blank"
-        >
-          CSA IMAGES
-        </a>
-      </div>
+      <Footer />
     </div>
   );
 };
