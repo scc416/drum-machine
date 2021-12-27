@@ -95,7 +95,7 @@ body {
   margin-bottom: -1px;
 }
 
-#volume-bar {
+.bright-volume-bar {
   width: 160px;
   border-radius: 5px;
   height: 10px;

@@ -90,7 +90,7 @@ const useData = () => {
   const play = (rawKey, valid) => {
     const key = valid ? rawKey : rawKey.key.toUpperCase();
     const keyExists = keys.includes(key);
-    if (keyExists) {
+    if (keyExists && on) {
       dispatch({ type: PLAY, key });
 
       const audio = document.getElementById(key);
