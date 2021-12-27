@@ -8,6 +8,7 @@ import {
   MUTE,
   soundLinks,
   VOLUME_MOVE,
+  keys,
 } from "../constants";
 
 const getVolume = (num) => {
@@ -66,7 +67,6 @@ const useData = () => {
   };
 
   const reducer = (state, action) => {
-    console.log(action.type);
     return reducers[action.type](state, action) || state;
   };
 
@@ -105,23 +105,13 @@ const useData = () => {
   };
 
   const mute = () => {
-    console.log("MOTE");
     dispatch({ type: MUTE });
   };
 
   const play = (key) => {
-    if (
-      key === "Q" ||
-      key === "W" ||
-      key === "E" ||
-      key === "A" ||
-      key === "S" ||
-      key === "D" ||
-      key === "Z" ||
-      key === "X" ||
-      key === "C"
-    ) {
-      let audio = document.getElementById(key);
+    const keyExists = keys.includes(key);
+    if (keyExists) {
+      const audio = document.getElementById(key);
       audio.currentTime = 0;
       audio.volume = volume;
       audio.muted = muted;
@@ -133,7 +123,6 @@ const useData = () => {
   const power = () => dispatch({ type: POWER });
 
   const hideScreen = on ? {} : { visibility: "hidden" };
-  console.log("on", on);
 
   const powerStyle = on ? {} : { textShadow: "none", color: "grey" };
 

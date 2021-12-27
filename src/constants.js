@@ -22,6 +22,8 @@ export const instruments = {
   C: "Finger Cymbals"
 };
 
+export const keys = Object.keys(instruments);
+
 export const PLAY = "PLAY";
 export const ENDED = "ENDED";
 export const POWER = "POWER"
