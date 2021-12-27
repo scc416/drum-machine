@@ -1,9 +1,9 @@
-const Power = ({power, powerStyle}) => {
+const PowerIcon = ({power, powerStyle}) => {
   return (
-    <div id="power" style={powerStyle} onClick={power} className="clickable">
+    <div class="power" style={powerStyle} onClick={power} className="clickable">
       <i className="fas fa-power-off" />
     </div>
   );
 };
 
-export default Power;
+export default PowerIcon;

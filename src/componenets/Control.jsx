@@ -15,7 +15,7 @@ const Control = (props) => {
   return (
     <div className="control">
       <Volume {...{ volumeIcon, volumeFunc, barPosition, volumeWidth, mute }} />
-      <Power {...{ power, powerStyle }} />
+      <PowerIcon {...{ power, powerStyle }} />
     </div>
   );
 };

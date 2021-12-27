@@ -74,7 +74,7 @@ body {
   justify-content: space-between;
 }
 
-#power {
+.power {
   color: #fccb0f;
   justify-content: flex-end;
   text-shadow: 0.5px 0.5px 4px #fc0;
