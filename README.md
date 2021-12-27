@@ -14,7 +14,7 @@ This is one of my project for [Front End Development Libraries Projects](https:/
 ## Live demo
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). It is deployed to [Netlify](https://www.netlify.com/):  
-https://the-quote.netlify.app/https://drum-pod.netlify.app/
+https://drum-pod.netlify.app/
 
 ## Final Product
 
