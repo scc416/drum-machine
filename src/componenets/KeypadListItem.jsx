@@ -5,7 +5,7 @@ const KeypadListItem = ({ char, play, playingStyle, ending }) => {
     <div
       id={"pad-" + char}
       className="drum-pad clickable"
-      onClick={() => play(char)}
+      onClick={() => play(char, true)}
       style={playingStyle(char)}
     >
       <audio

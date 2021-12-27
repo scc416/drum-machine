@@ -99,7 +99,8 @@ const useData = () => {
     dispatch({ type: MUTE });
   };
 
-  const play = (key) => {
+  const play = (rawKey, valid) => {
+    const key = valid ? rawKey : rawKey.key.toUpperCase();
     const keyExists = keys.includes(key);
     if (keyExists) {
       const audio = document.getElementById(key);

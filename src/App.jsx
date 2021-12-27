@@ -13,8 +13,8 @@ const App = () => {
       onMouseUp={volumeFunc(VOLUME_END)}
       onMouseMove={volumeFunc(VOLUME_MOVE)}
       tabIndex="0"
-      id="drum-machine"
-      onKeyPress={(e) => play(e.key.toUpperCase())}
+      className="drum-machine"
+      onKeyPress={play}
     >
       <Player {...props} />
       <Footer />
