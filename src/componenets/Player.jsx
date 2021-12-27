@@ -13,38 +13,40 @@ const Player = ({
   currentInstument,
   mute,
   powerStyle,
-  power,
+  power
 }) => {
   return (
     <div className="player">
-      <div id="display" style={hideScreen}>
-        <span className="title">Drums and Percussion</span>
-        <div className="show">{currentInstument}</div>
-        <div className="control">
-          <div className="volume">
-            <div onMouseDown={mute} className="clickable to-be-clicked">
-              <i className={volumeIcon()} />
-            </div>
+      <div id="display">
+        <div style={hideScreen}>
+          <span className="title">Drums and Percussion</span>
+          <div className="show">{currentInstument}</div>
+          <div className="control">
+            <div className="volume">
+              <div onMouseDown={mute} className="clickable to-be-clicked">
+                <i className={volumeIcon()} />
+              </div>
 
-            <div
-              className="volume-bar clickable"
-              onMouseDown={volumeFunc(VOLUME_START)}
-            >
-              <div id="volume-bar-background" />
-              <div className="drag-bar" style={barPosition()}>
-                <div id="volume-bar" style={volumeWidth()}>
-                  <div id="drag" />
+              <div
+                className="volume-bar clickable"
+                onMouseDown={volumeFunc(VOLUME_START)}
+              >
+                <div id="volume-bar-background" />
+                <div className="drag-bar" style={barPosition()}>
+                  <div id="volume-bar" style={volumeWidth()}>
+                    <div id="drag" />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div
-            id="power"
-            style={powerStyle}
-            onClick={power}
-            className="clickable"
-          >
-            <i className="fas fa-power-off" />
+            <div
+              id="power"
+              style={powerStyle}
+              onClick={power}
+              className="clickable"
+            >
+              <i className="fas fa-power-off" />
+            </div>
           </div>
         </div>
       </div>

@@ -39,9 +39,9 @@ const useData = () => {
       return { ...state, playing: false, key: null };
     },
     [POWER]: (state) => {
-      const { on, playing } = state;
-      const newPlaying = on ? false : playing;
-      return { ...state, on: !on, playing: newPlaying };
+      const { on, key: currentKey } = state;
+      const key = on ? null : currentKey;
+      return { ...state, on: !on, key };
     },
     [VOLUME_START]: (state, { newVolume }) => {
       return {
