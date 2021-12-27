@@ -23,10 +23,10 @@ const useData = () => {
       };
     },
     [PLAY]: (state, { key }) => {
-      return { ...state, key, playing: true };
+      return { ...state, key };
     },
     [ENDED]: (state) => {
-      return { ...state, playing: false, key: null };
+      return { ...state, key: null };
     },
     [POWER]: (state) => {
       const { on, key: currentKey } = state;
@@ -63,14 +63,13 @@ const useData = () => {
 
   const [state, dispatch] = useReducer(reducer, {
     key: null,
-    playing: false,
     on: true,
     volume: 0.61,
     volumeChanging: false,
     muted: false,
   });
 
-  const { volumeChanging, on, muted, key, volume, playing } = state;
+  const { on, muted, key, volume } = state;
 
   const actualVolume = muted ? 0 : volume;
   const volumeWidth = { width: actualVolume * 160 + "px" };
@@ -119,25 +118,22 @@ const useData = () => {
     thisKey === key ? { textShadow: "1.5px 1.5px 1px grey" } : {};
 
   const ending = (thisKey) => {
-    if (thisKey === key) {
-      dispatch({ type: ENDED });
-    }
+    if (thisKey === key) dispatch({ type: ENDED });
   };
 
   return {
     playingStyle,
     ending,
-    powerStyle,
+    power,
     volumeFunc,
-    volumeChanging,
-    volume,
-    muted,
     play,
     mute,
+    volumeIcon,
+    powerStyle,
+    volume,
+    muted,
     hideScreen,
     currentInstument,
-    power,
-    volumeIcon,
     barPosition,
     volumeWidth,
   };
