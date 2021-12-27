@@ -13,7 +13,6 @@ const App = () => {
       onMouseUp={volumeFunc(VOLUME_END)}
       onMouseMove={volumeFunc(VOLUME_MOVE)}
       tabIndex="0"
-      className="drum-machine"
       onKeyPress={play}
     >
       <Player {...props} />
