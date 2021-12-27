@@ -1,9 +1,9 @@
+import VolumeIcon from "./VolumeIcon";
+
 const Volume = ({ volumeIcon, volumeFunc, barPosition, volumeWidth, mute }) => {
   return (
     <div className="volume">
-      <div onMouseDown={mute} className="clickable to-be-clicked">
-        <i className={volumeIcon()} />
-      </div>
+      <VolumeIcon {...{ mute, volumeIcon }} />
       <div
         className="volume-bar clickable"
         onMouseDown={volumeFunc(VOLUME_START)}

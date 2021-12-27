@@ -1,4 +1,4 @@
-import Power from "./Power";
+import Power from "./PowerIcon";
 import { VOLUME_START } from "../constants";
 import Volume from "./Volume";
 
