@@ -8,6 +8,7 @@ import {
   MUTE,
   VOLUME_MOVE,
   keys,
+  instruments
 } from "../constants";
 
 const getVolume = (num) => {
@@ -151,6 +152,8 @@ const useData = () => {
     }
   };
 
+  const currentInstument = instruments[key];
+
   return {
     playingStyle,
     ending,
@@ -162,7 +165,7 @@ const useData = () => {
     play,
     mute,
     hideScreen,
-    key,
+    currentInstument,
     power,
     volumeIcon,
     barPosition,
