@@ -121,15 +121,13 @@ const useData = () => {
   const powerStyle = on ? {} : { textShadow: "none", color: "grey" };
 
   const volumeIcon = () => {
-    if (muted) {
-      return "fas fa-volume-mute";
-    } else if (volume === 0) {
-      return "fas fa-volume-off";
-    } else if (volume > 0.6) {
-      return "fas fa-volume-up";
-    } else {
-      return "fas fa-volume-down";
-    }
+    if (muted) return "fas fa-volume-mute";
+
+    if (volume === 0) return "fas fa-volume-off";
+
+    if (volume > 0.6) return "fas fa-volume-up";
+
+    return "fas fa-volume-down";
   };
 
   const barPosition = () => {
