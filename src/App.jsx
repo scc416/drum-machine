@@ -1,13 +1,11 @@
 import "./App.css";
-import { instruments } from "./constants";
+import { instruments, VOLUME_START, VOLUME_MOVE, VOLUME_END } from "./constants";
 import useData from "./hooks/useData";
 import KeypadList from "./componenets/KeypadList";
 import Footer from "./componenets/Footer"
 
 const App = () => {
   const {
-    volumeEnd,
-    volumeStart,
     barPosition,
     play,
     hideScreen,
@@ -17,15 +15,15 @@ const App = () => {
     volumeIcon,
     powerStyle,
     volumeWidth,
-    volumeMove,
+    volumeFunc,
     playingStyle,
     ending,
   } = useData();
 
   return (
     <div
-      onMouseUp={volumeEnd}
-      onMouseMove={volumeMove}
+      onMouseUp={volumeFunc(VOLUME_END)}
+      onMouseMove={volumeFunc(VOLUME_MOVE)}
       tabIndex="0"
       id="drum-machine"
       onKeyPress={(e) => play(e.key.toUpperCase())}
@@ -43,7 +41,7 @@ const App = () => {
 
                 <div
                   className="volume-bar clickable"
-                  onMouseDown={(e) => volumeStart(e.clientX)}
+                  onMouseDown={volumeFunc(VOLUME_START)}
                 >
                   <div id="volume-bar-background" />
                   <div className="drag-bar" style={barPosition()}>

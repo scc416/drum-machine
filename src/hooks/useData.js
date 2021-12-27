@@ -27,6 +27,7 @@ const getVolume = (num) => {
 const useData = () => {
   const reducers = {
     [VOLUME_MOVE]: (state, { newVolume }) => {
+      if (!state.volumeChanging) return state;
       return {
         ...state,
         volume: newVolume,
@@ -90,18 +91,10 @@ const useData = () => {
     }
   };
 
-  const volumeEnd = ({ clientX }) => {
-    dispatch({ type: VOLUME_END, newVolume: getVolume(clientX) });
-  };
-
-  const volumeStart = ({ clientX }) => {
-    dispatch({ type: VOLUME_START, newVolume: getVolume(clientX) });
-  };
-
-  const volumeMove = ({ clientX }) => {
-    if (volumeChanging) {
-      dispatch({ type: VOLUME_MOVE, newVolume: getVolume(clientX) });
-    }
+  const volumeFunc = (type) => {
+    return ({ clientX }) => {
+      dispatch({ type, newVolume: getVolume(clientX) });
+    };
   };
 
   const mute = () => {
@@ -165,9 +158,8 @@ const useData = () => {
     playingStyle,
     ending,
     powerStyle,
-    volumeEnd,
+    volumeFunc,
     volumeChanging,
-    volumeStart,
     volume,
     muted,
     play,
@@ -178,7 +170,6 @@ const useData = () => {
     volumeIcon,
     barPosition,
     volumeWidth,
-    volumeMove,
   };
 };
 
