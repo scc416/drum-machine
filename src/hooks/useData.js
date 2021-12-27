@@ -8,7 +8,7 @@ import {
   MUTE,
   VOLUME_MOVE,
   keys,
-  instruments
+  instruments,
 } from "../constants";
 
 const getVolume = (num) => {
@@ -39,7 +39,9 @@ const useData = () => {
       return { ...state, playing: false, key: null };
     },
     [POWER]: (state) => {
-      return { ...state, on: !state.on };
+      const { on, playing } = state;
+      const newPlaying = on ? false : playing;
+      return { ...state, on: !on, playing: newPlaying };
     },
     [VOLUME_START]: (state, { newVolume }) => {
       return {
