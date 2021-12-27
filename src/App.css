@@ -112,7 +112,7 @@ body {
   border-radius: 5px;
 }
 
-#drag {
+.drag {
   width: 15px;
   height: 15px;
   background-color: #fccb0f;

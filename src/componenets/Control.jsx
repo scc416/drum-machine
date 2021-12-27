@@ -1,5 +1,4 @@
-import Power from "./PowerIcon";
-import { VOLUME_START } from "../constants";
+import PowerIcon from "./PowerIcon";
 import Volume from "./Volume";
 
 const Control = (props) => {

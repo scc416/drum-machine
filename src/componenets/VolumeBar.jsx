@@ -9,7 +9,7 @@ const VolumeBar = ({ volumeFunc, barPosition, volumeWidth }) => {
       <div id="volume-bar-background" />
       <div className="drag-bar" style={barPosition}>
         <div id="volume-bar" style={volumeWidth}>
-          <div id="drag" />
+          <div className="drag" />
         </div>
       </div>
     </div>
