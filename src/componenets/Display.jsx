@@ -5,7 +5,7 @@ const Display = (props) => {
   return (
     <div className="display">
       <div style={hideScreen}>
-        <span className="title">Drums and Percussion</span>
+        <span>Drums and Percussion</span>
         <div className="show">{currentInstument}</div>
         <Control {...props} />
       </div>

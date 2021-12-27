@@ -102,7 +102,7 @@ const useData = () => {
   };
 
   const hideScreen = on ? {} : { visibility: "hidden" };
-  const powerStyle = on ? {} : { textShadow: "none", color: "grey", visibility: "visible" };
+  const powerStyle = on ? {} : { textShadow: "none", color: "grey" };
 
   const volumeIcon = () => {
     if (muted) return "fas fa-volume-mute";

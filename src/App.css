@@ -6,13 +6,11 @@ body {
   overflow-y: hidden;
 }
 
-/* use viewport-relative units to cover page fully */
 body {
   height: 100vh;
   width: 100vw;
 }
 
-/* include border and padding in element width and height */
 * {
   user-select: none;
   box-sizing: border-box;
@@ -27,7 +25,7 @@ body {
   color: #fccb0f;
 }
 
-.title {
+.display span {
   font-size: 12px;
 }
 
@@ -74,7 +72,7 @@ body {
   justify-content: space-between;
 }
 
-.power {
+#power {
   color: #fccb0f;
   justify-content: flex-end;
   text-shadow: 0.5px 0.5px 4px #fc0;
@@ -128,7 +126,7 @@ body {
   transform: rotate(180deg);
 }
 
-.to-be-clicked {
+.volume-icon {
   z-index: 2;
   width: 30px;
 }
@@ -143,9 +141,9 @@ body {
   margin-top: 32px;
   height: 200px;
   width: 200px;
-  font-family: Source Code Pro;
+  font-family: 'Source Code Pro';
   border-radius: 50%;
-  border: white 5px solid;
+  border: 5px solid #FFF;
   opacity: 0.85;
 }
 .circle-container > * {
@@ -198,11 +196,11 @@ body {
   text-align: center;
   position: flex;
   font-weight: 900;
-  color: white;
+  color: #FFF;
   z-index: 2;
   opacity: 0.95;
 }
 
 .footer {
-  font-family: Gowun Dodum;
+  font-family: 'Gowun Dodum';
 }

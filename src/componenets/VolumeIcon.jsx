@@ -1,6 +1,6 @@
 const VolumeIcon = ({ mute, volumeIcon }) => {
   return (
-    <div onMouseDown={mute} className="clickable to-be-clicked">
+    <div onMouseDown={mute} className="clickable volume-icon">
       <i className={volumeIcon()} />
     </div>
   );
