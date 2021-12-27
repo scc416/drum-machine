@@ -84,11 +84,7 @@ const useData = () => {
 
   const volumeWidth = () => {
     const v = muted ? 0 : volume;
-    if (muted) {
-      return { width: "0px" };
-    } else {
-      return { width: volume * 160 + "px" };
-    }
+    return { width: v * 160 + "px" };
   };
 
   const volumeFunc = (type) => {
@@ -148,7 +144,7 @@ const useData = () => {
   };
 
   const ending = (thisKey) => {
-    if (thisKey == key) {
+    if (thisKey === key) {
       dispatch({ type: ENDED });
     }
   };
