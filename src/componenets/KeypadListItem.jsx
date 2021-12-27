@@ -3,7 +3,6 @@ import { soundLinks } from "../constants";
 const KeypadListItem = ({ char, play, playingStyle, ending }) => {
   return (
     <div
-      id={"pad-" + char}
       className="drum-pad clickable"
       onClick={() => play(char, true)}
       style={playingStyle(char)}

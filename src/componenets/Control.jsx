@@ -1,5 +1,6 @@
 import Power from "./Power";
 import { VOLUME_START } from "../constants";
+import Volume from "./Volume";
 
 const Control = (props) => {
   const {
@@ -13,22 +14,7 @@ const Control = (props) => {
   } = props;
   return (
     <div className="control">
-      <div className="volume">
-        <div onMouseDown={mute} className="clickable to-be-clicked">
-          <i className={volumeIcon()} />
-        </div>
-        <div
-          className="volume-bar clickable"
-          onMouseDown={volumeFunc(VOLUME_START)}
-        >
-          <div id="volume-bar-background" />
-          <div className="drag-bar" style={barPosition}>
-            <div id="volume-bar" style={volumeWidth}>
-              <div id="drag" />
-            </div>
-          </div>
-        </div>
-      </div>
+      <Volume {...{ volumeIcon, volumeFunc, barPosition, volumeWidth, mute }} />
       <Power {...{ power, powerStyle }} />
     </div>
   );
