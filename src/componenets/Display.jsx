@@ -1,7 +1,7 @@
 import { VOLUME_START } from "../constants";
 import Power from "./Power";
 
-const Display = (
+const Display = ({
   volumeIcon,
   volumeFunc,
   barPosition,
@@ -10,8 +10,8 @@ const Display = (
   currentInstument,
   mute,
   powerStyle,
-  power
-) => {
+  power,
+}) => {
   return (
     <div id="display">
       <div style={hideScreen}>
