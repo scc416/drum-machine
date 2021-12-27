@@ -6,7 +6,6 @@ import {
   VOLUME_START,
   VOLUME_END,
   MUTE,
-  soundLinks,
   VOLUME_MOVE,
   keys,
 } from "../constants";
@@ -15,12 +14,10 @@ const getVolume = (num) => {
   const position = document
     .getElementById("volume-bar-background")
     .getBoundingClientRect().left;
-  let newNum = num - position;
-  if (newNum > 160) {
-    newNum = 160;
-  } else if (newNum < 0) {
-    newNum = 0;
-  }
+
+  const newNum = num - position;
+  if (newNum > 160) return 1;
+  if (newNum < 0) return 0;
   return newNum / 160;
 };
 
@@ -35,10 +32,10 @@ const useData = () => {
       };
     },
     [PLAY]: (state, { key }) => {
-      return { ...state, key, classes: true };
+      return { ...state, key, playing: true };
     },
     [ENDED]: (state) => {
-      return { ...state, classes: false, key: null };
+      return { ...state, playing: false, key: null };
     },
     [POWER]: (state) => {
       return { ...state, on: !state.on };
@@ -73,14 +70,14 @@ const useData = () => {
 
   const [state, dispatch] = useReducer(reducer, {
     key: null,
-    classes: false,
+    playing: false,
     on: true,
     volume: 0.61,
     volumeChanging: false,
     muted: false,
   });
 
-  const { volumeChanging, on, muted, key, volume, classes } = state;
+  const { volumeChanging, on, muted, key, volume, playing } = state;
 
   const volumeWidth = () => {
     const v = muted ? 0 : volume;
@@ -139,7 +136,7 @@ const useData = () => {
   };
 
   const playingStyle = (thisKey) => {
-    if (thisKey === key && classes) {
+    if (thisKey === key && playing) {
       return {
         textShadow: "1.5px 1.5px 1px grey",
       };
